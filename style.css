@@ -1,0 +1,27 @@
+body {
+    background-color: #111b22;
+    font-family: Arial, Helvetica, sans-serif;
+    color: lightgrey;
+}
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.main {
+    background-color: #1d232b;
+    border-radius: 20px;
+    padding: 5%;
+    max-width: 85%;
+    max-height: 85%;
+    height: 20em;
+    width: 20em;
+}
+.icons {
+    width: fit-content;
+}
+.icon {
+    width: 10%;
+}
