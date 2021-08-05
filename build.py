@@ -4,17 +4,17 @@ import sys
 import re
 import json
 
-# Default
-__STAIC_RESOURCES=[]
-__TEMPLATES=[]
-__TARGET = 'docs/'
-__ORIGIN='template/'
-
-__REPLACE = {}
-
 # other
 __CONFIG_FILE='config/settings.json'
 __ALLOWED='[ab-z]|[AB-Z]|_'
+
+with open(__CONFIG_FILE) as f:
+    data = json.load(f)
+    __ORIGIN = data['template_folder']
+    __TARGET = data['targer_folder']
+    __STAIC_RESOURCES = data['static_resources']
+    __TEMPLATES = data['templates']
+    __REPLACE = data['replace_dic']
 
 def copy_static_to_target():
     for resource in __STAIC_RESOURCES:
@@ -65,23 +65,8 @@ def compute_template(file_in:TextIOWrapper, file_out:TextIOWrapper):
         else:
             file_out.write(line)
 
-def load_config():
-    with open(__CONFIG_FILE) as f:
-        data = json.load(f)
-        global __ORIGIN
-        global __TARGET
-        global __STAIC_RESOURCES
-        global __TEMPLATES
-        global __REPLACE
-        __ORIGIN = data['template_folder']
-        __TARGET = data['targer_folder']
-        __STAIC_RESOURCES = data['static_resources']
-        __TEMPLATES = data['templates']
-        __REPLACE = data['replace_dic']
-
 def main():
     # Read config
-    load_config()
     
     # Delete folder content
     os.system(f'rm -fr {__TARGET} && mkdir {__TARGET}')
