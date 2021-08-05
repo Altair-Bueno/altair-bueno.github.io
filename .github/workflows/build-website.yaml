@@ -1,5 +1,4 @@
 name: "Build website"
-
 on: ["push"]
 jobs:
   build:
@@ -12,6 +11,8 @@ jobs:
           python-version: '3.x'
       - name: Generate resources
         run: python build.py
+      - name: Copy new files to doc/ folder
+        run: "cp -u -R out/ docs/"
       - name: Push back changes
         continue-on-error: true
         run: |

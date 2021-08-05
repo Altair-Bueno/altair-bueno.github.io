@@ -1,6 +1,6 @@
 {
     "template_folder": "template/",
-    "targer_folder": "docs/",
+    "targer_folder": "out/",
     "static_resources": [
         "res/",
         "style.css"
@@ -11,6 +11,7 @@
     "replace_dic": {
         "NAME": "Altair Bueno",
         "WEBSITE": "https://altair-bueno.github.io/",
-        "PROFILEPICTURE": "https://avatars.githubusercontent.com/u/67512202?v=4"
+        "PROFILEPICTURE": "https://avatars.githubusercontent.com/u/67512202?v=4",
+        "STATIC_GENERATED": "Test string for comment"
     }
 }
