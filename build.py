@@ -5,22 +5,12 @@ import re
 import json
 
 # Default
-__STAIC_RESOURCES=[
-    'res/',
-    'style.css'
-]
-__TEMPLATES=[
-    'index.html',
-    'test.html'
-]
+__STAIC_RESOURCES=[]
+__TEMPLATES=[]
 __TARGET = 'docs/'
 __ORIGIN='template/'
 
-__REPLACE = {
-  'NAME':'Altair Bueno',
-  'WEBSITE':'https://altair-bueno.github.io/',
-  'PROFILEPICTURE':'https://avatars.githubusercontent.com/u/67512202?v=4',
-}
+__REPLACE = {}
 
 # other
 __CONFIG_FILE='config/settings.json'

@@ -1,4 +1,21 @@
+name: "Build website"
+
 on: ["push"]
 jobs:
   build:
-    
+    runs-on: ubuntu-latest
+    name: Generate website
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with: 
+          python-version: '3.x'
+      - name: Generate resources
+        run: python build.py
+      - name: Push back changes
+        continue-on-error: true
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git commit -am "Generated TOC"
+          git push
