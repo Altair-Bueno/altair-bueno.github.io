@@ -3,14 +3,14 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: lightgrey;
 }
-.center {
+.center_element {
     position: absolute;
     left: 50%;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-.main {
+.main_div {
     background-color: #1d232b;
     border-radius: 20px;
     padding: 5%;
@@ -19,14 +19,17 @@ body {
     height: 20em;
     width: 20em;
 }
+.about_info {
 
+}
 .icons {
     display: flex;
     position: relative;
 }
 .icon_container {
     width: 15%;
+    padding: 3%;
 }
-.icon {
+.icon_svg {
     width: 100%;
 }
