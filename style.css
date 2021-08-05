@@ -3,6 +3,21 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: lightgrey;
 }
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    text-align: left;
+    z-index: -1;
+    font-size: 0.2em;
+}
+a {
+    color: rgb(88, 166, 255);
+}
+
 .center_element {
     position: absolute;
     left: 50%;
@@ -15,7 +30,6 @@ body {
     border-radius: 20px;
     padding: 5%;
     max-width: 85%;
-    max-height: 85%;
     height: 20em;
     width: 20em;
 }
