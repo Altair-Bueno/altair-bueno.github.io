@@ -37,7 +37,7 @@ a {
     margin-right: 0%;
 }
 .pfp {
-    width: 3rem;
+   width: 100%;
 }
 
 @media only screen and (max-height: 500px) {
