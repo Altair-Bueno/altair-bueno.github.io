@@ -6,8 +6,7 @@
         "style.css"
     ],
     "templates": [
-        "index.html",
-        "test.html"
+        "index.html"
     ],
     "replace_dic": {
         "NAME": "Altair Bueno",
