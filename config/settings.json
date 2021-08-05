@@ -1,0 +1,17 @@
+{
+    "template_folder": "template/",
+    "targer_folder": "docs/",
+    "static_resources": [
+        "res/",
+        "style.css"
+    ],
+    "templates": [
+        "index.html",
+        "test.html"
+    ],
+    "replace_dic": {
+        "NAME": "Altair Bueno",
+        "WEBSITE": "https://altair-bueno.github.io/",
+        "PROFILEPICTURE": "https://avatars.githubusercontent.com/u/67512202?v=4"
+    }
+}
