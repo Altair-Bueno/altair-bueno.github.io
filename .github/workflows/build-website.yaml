@@ -12,7 +12,9 @@ jobs:
       - name: Generate resources
         run: python build.py
       - name: Copy new files to doc/ folder
-        run: "cp -R out/ docs/"
+        run: |
+          unalias cp
+          cp -R out/ docs/
       - name: Push back changes
         continue-on-error: true
         run: |
