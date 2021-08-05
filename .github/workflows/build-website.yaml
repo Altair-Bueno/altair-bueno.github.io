@@ -13,7 +13,7 @@ jobs:
         run: python build.py
       - name: Copy new files to doc/ folder
         run: |
-          unalias cp
+          rm -rf docs/
           cp -R out/ docs/
       - name: Push back changes
         continue-on-error: true
