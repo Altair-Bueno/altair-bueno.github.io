@@ -4,34 +4,24 @@ body {
     color: lightgrey;
 }
 
-footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
-    text-align: left;
-    z-index: -1;
-    font-size: 2%;
-}
+
 a {
     color: rgb(88, 166, 255);
 }
-
+.parent {
+    
+}
 .center_element {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    
 }
 .main_div {
     background-color: #1d232b;
     border-radius: 20px;
     padding: 5%;
-    max-width: 85%;
-    height: 20em;
-    width: 20em;
+    max-width: 500px;
+    display: block;
+    margin: auto;
+    margin-top: 20%;
 }
 .about_info {
 
@@ -41,9 +31,32 @@ a {
     position: relative;
 }
 .icon_container {
+    max-width: 30px;
     width: 15%;
     padding: 3%;
 }
 .icon_svg {
     width: 100%;
+}
+
+@media only screen and (max-height: 500px) {
+    footer {
+        padding: 1rem;
+        text-align: left;
+        font-size: 2%;
+    }
+}
+
+
+@media only screen and (min-height: 500px) {
+    footer {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 1rem;
+        text-align: left;
+        z-index: -1;
+        font-size: 2%;
+    }
 }
