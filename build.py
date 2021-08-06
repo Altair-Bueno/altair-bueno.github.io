@@ -4,10 +4,10 @@ from io import TextIOWrapper
 import os
 import sys
 import re
-import json
+import yaml
 
 # other
-__CONFIG_FILE='config/settings.json'
+__CONFIG_FILE='config/settings.yaml'
 
 """
 Regrex will match any of the following keys
@@ -26,7 +26,7 @@ Regrex won't match any of the following keys
 __ALLOWED='[ab-z]|[AB-Z]|_'
 
 with open(__CONFIG_FILE) as f:
-    data = json.load(f)
+    data = yaml.safe_load(f)
     __ORIGIN = data['template_folder']
     __TARGET = data['targer_folder']
     __STAIC_RESOURCES = data['static_resources']
@@ -60,7 +60,7 @@ def compute_line(line:str):
         if loading_key and not (re.match(__ALLOWED,c)):
             # end of key
             loading_key = False
-            replace_value = __REPLACE.get(key)
+            replace_value = __REPLACE[key]
             if replace_value == None:
                 sys.stderr.write(f'ERR: key {key} not found in dictionary. It will be skipped\n')
             else:
