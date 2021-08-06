@@ -19,7 +19,8 @@ replace_dic:
     LINKEDIN_URL: "https://example.org"
     MAIL_TITLE: "Contact me"
     MAIL_URL: "mailto:business.altair.bueno@outlook.com"
-    PROFILEPICTURE_TITLE: "My website"
+    PROFILEPICTURE_TITLE: "Check the source code"
+    PROFILEPICTURE_URL: "https://github.com/Altair-Bueno/altair-bueno.github.io"
     MAIN_BODY_CONTENT: |
         <h1>Lorem ipsum dolor sit amet</h1>
             <p>
