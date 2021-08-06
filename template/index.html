@@ -7,17 +7,17 @@
         <!--Favicon-->
         <link rel="icon" type="image/png" href="$PROFILEPICTURE">
         <!--Content, preview and name-->
-        <title>$NAME</title>
+        <title>$WEBSITE_NAME</title>
         <meta property="og:type" content="website">
-        <meta property="og:url" content="$WEBSITE">
-        <meta property="og:title" content="$NAME">
-        <meta property="og:description" content="$NAME's business card and contact info">
+        <meta property="og:url" content="$WEBSITE_URL">
+        <meta property="og:title" content="$WEBSITE_NAME">
+        <meta property="og:description" content="$DESCRIPTION">
         <meta property="og:image" content="$PROFILEPICTURE">
-        <meta name="twitter:title" content="$NAME">
+        <meta name="twitter:title" content="$WEBSITE_NAME">
 
         <!--About info-->
-        <meta name="author" content="$NAME">
-        <meta name="description" content="$NAME's business card and contact info">
+        <meta name="author" content="$AUTHOR_NAME">
+        <meta name="description" content="$DESCRIPTION">
         
         <!--Page config-->
         <meta charset="utf-8">
@@ -31,36 +31,30 @@
         <div class="center_element main_div">
             <div class="content">
                 <div class="about_info">
-                    <h1>Lorem ipsum dolor sit amet</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                        incididunt ut labore et dolore magna aliqua. Elit scelerisque mauris pellentesque 
-                        pulvinar. Lorem donec massa sapien faucibus et molestie ac feugiat. A erat nam at 
-                        lectus. Nunc non blandit massa enim nec dui nunc. Diam vel quam elementum pulvinar.
-                    </p>
+                $MAIN_BODY_CONTENT     
                 </div>
                 <div class="icons">
                     <!--Github-->
                     <div class= "icon_container">
-                        <a title="Check Altair's projects on GitHub" href="https://github.com/Altair-Bueno" target="_blank">
+                        <a title="$GITHUB_TITLE" href="$GITHUB_URL" target="_blank">
                             <img class="icon_svg" alt="GitHub" src="res/github.svg">
                         </a>
                     </div>
                     <!--TODO LinkedIn-->
                     <div class= "icon_container">
-                        <a title="Find me in Linkedin" href="https://example.org" target="_blank">
+                        <a title="$LINKEDIN_TITLE" href="$LINKEDIN_URL" target="_blank">
                             <img class="icon_svg" alt="Linkedin" src="res/linkedin.svg">
                         </a>
                     </div>
                     <!--Mail contact-->
                     <div class= "icon_container">
-                        <a title="Contact me" href="mailto:business.altair.bueno@outlook.com" target="_blank">
+                        <a title="$MAIL_TITLE" href="$MAIL_URL" target="_blank">
                             <img class="icon_svg" alt="Mail" src="res/mail.svg">
                         </a>
                     </div>
                     <div class="icon_container last">
-                        <a title="My website" href="$WEBSITE" target="_blank">
-                            <img class="pfp" alt="$NAME's website" src="$PROFILEPICTURE">
+                        <a title="PROFILEPICTURE_TITLE" href="$WEBSITE_URL" target="_blank">
+                            <img class="pfp" alt="$AUTHOR_NAME's photo" src="$PROFILEPICTURE">
                         </a>
                     </div>
                 </div>
