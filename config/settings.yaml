@@ -28,7 +28,7 @@ replace_dic:
                 pulvinar. Lorem donec massa sapien faucibus et molestie ac feugiat. A erat nam at 
                 lectus. Nunc non blandit massa enim nec dui nunc. Diam vel quam elementum pulvinar.
             </p>
-    LICENSE_AGREEMENT: |
+    TEMPLATE_CREATOR: |
         <div>
             Template made with ❤️ by <a class="footer_link" href="https://github.com/Altair-Bueno">Altair Bueno</a>
         </div>
