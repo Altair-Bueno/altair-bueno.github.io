@@ -94,7 +94,8 @@ def compute_template(file_in:TextIOWrapper, file_out:TextIOWrapper):
             file_out.write(line)
 
 """
-build.py
+Waddle, a template engine for Python
+
 1. Remove __TARGET folder content
 2. Proccess templates folder
 3. Add __STATIC_RESOURCES to __TARGET
