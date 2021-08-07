@@ -17,7 +17,7 @@ a {
     max-width: 500px;
     display: block;
     margin: auto;
-    margin-top: 20%;
+    margin-top: $MARGIN_TOP_MAIN_DIV;
 }
 .icons {
     display: flex;

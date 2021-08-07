@@ -7,6 +7,7 @@ templates:
     - index.html
 replace_dic:
     BREAKPOINT_CSS_FOOTER: 650px
+    MARGIN_TOP_MAIN_DIV: 30vh
     WEBSITE_NAME: "Altair Bueno"
     WEBSITE_URL: "https://altair-bueno.github.io/"
     PROFILEPICTURE: "https://avatars.githubusercontent.com/u/67512202?v=4"
