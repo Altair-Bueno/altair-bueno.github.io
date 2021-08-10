@@ -2,7 +2,6 @@
 
 from io import TextIOWrapper
 import os
-import sys
 import re
 import yaml
 
@@ -10,6 +9,8 @@ import yaml
 __CONFIG_FILE='config/settings.yaml'
 
 """
+Allowed characters for key: [ab-z]|[AB-Z]|_
+
 Regrex will match any of the following keys
 - Hello_world
 - HELLO_WORLD
@@ -23,7 +24,6 @@ Regrex won't match any of the following keys
 - h$y
 - Hello&world
 """
-__ALLOWED='[ab-z]|[AB-Z]|_'
 
 with open(__CONFIG_FILE) as f:
     data = yaml.safe_load(f)
@@ -42,56 +42,20 @@ def copy_static_to_target():
             string_interpolation = f'\'{__ORIGIN + resource}\' \'{__TARGET + os.path.dirname(resource)}\''
             os.system(f'cp -R {string_interpolation}')
 
-"""
-TODO
-Definetly not the best performant script
-but it should do the trick. Also, public
-repositories get free GitHub Actions so...
-"""
+def waddle(line:str):
+    regex = re.compile(r'[^\\]?(?P<fullmatch>\$(?P<key>([ab-z]|[AB-Z]|_)+)\\?)')
+    for match in re.findall(regex,line):
+        full = match[0]
+        key = match[1]
+        replace = __REPLACE[key]
+        line = line.replace(full,replace)
+    return line
 
-def compute_line(line:str):
-    out_string = ''
-    key=''
-    
-    scape = False
-    loading_key = False
 
-    for c in line:
-        if loading_key and not (re.match(__ALLOWED,c)):
-            # end of key
-            loading_key = False
-            replace_value = __REPLACE[key]
-            if replace_value == None:
-                sys.stderr.write(f'ERR: key {key} not found in dictionary. It will be skipped\n')
-            else:
-                out_string+=replace_value
-            key = ''
-            if c != '\\': out_string+=c
-        elif loading_key:
-            # Add to key
-            key+=c
-        elif scape:
-            # Scaped character
-            out_string+=c
-            scape = False
-        elif c == '\\':
-            # Scape next character
-            scape = True
-        elif c == '$':
-            # Start of key
-            loading_key=True
-        else:
-            # Nothing
-            out_string+=c
-    return out_string
 
 def compute_template(file_in:TextIOWrapper, file_out:TextIOWrapper):
     for line in file_in:
-        if '$' in line:
-            out_line = compute_line(line)
-            file_out.write(out_line)
-        else:
-            file_out.write(line)
+        file_out.write(waddle(line))
 
 """
 Waddle, a template engine for Python
