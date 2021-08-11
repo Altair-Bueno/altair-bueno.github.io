@@ -1,68 +1,68 @@
 #!/usr/bin/env python3
-
-from io import TextIOWrapper
 import os
 import re
-import yaml
+import shutil
+from yaml import safe_load
 
-# other
-__CONFIG_FILE='config/settings.yaml'
 
-"""
-Allowed characters for key: [ab-z]|[AB-Z]|_
+# Where the config file is located
+__CONFIG_FILE = 'config/settings.yaml'
 
-Regrex will match any of the following keys
-- Hello_world
-- HELLO_WORLD
-- helloworld
-
-Regrex won't match any of the following keys
-- H6
-- 94
-- 8h
-- hello-world
-- h$y
-- Hello&world
-"""
+# Compiled regex
+# fullmatch = 0
+# key = 1
+__REGEX = re.compile(r'[^\\]?(?P<fullmatch>\$(?P<key>([ab-z]|[AB-Z]|_)+)\\?)')
 
 with open(__CONFIG_FILE) as f:
-    data = yaml.safe_load(f)
+    data = safe_load(f)
     __ORIGIN = data['template_folder']
     __TARGET = data['targer_folder']
-    __STAIC_RESOURCES = data['static_resources']
+    __STATIC_RESOURCES = data['static_resources']
     __TEMPLATES = data['templates']
     __REPLACE = data['replace_dic']
 
-def copy_static_to_target():
-    for resource in __STAIC_RESOURCES:
-        if os.path.isfile(resource):
-            string_interpolation = f'\'{__ORIGIN + resource}\' \'{__TARGET}\''
-            os.system(f'cp {string_interpolation}')
-        else:
-            string_interpolation = f'\'{__ORIGIN + resource}\' \'{__TARGET + os.path.dirname(resource)}\''
-            os.system(f'cp -R {string_interpolation}')
-
 def waddle(line:str):
-    regex = re.compile(r'[^\\]?(?P<fullmatch>\$(?P<key>([ab-z]|[AB-Z]|_)+)\\?)')
-    for match in re.findall(regex,line):
+    for match in re.findall(__REGEX,line):
         full = match[0]
         key = match[1]
         replace = __REPLACE[key]
+        if replace == None:
+            replace = ''
         line = line.replace(full,replace)
     return line
 
+def process_template(template_name:str):
+    output_path = __TARGET + template_name
+    input_path =__ORIGIN + template_name
 
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    
+    output_file = open(output_path,'wt')
+    input_file = open(input_path,'rt')
 
-def compute_template(file_in:TextIOWrapper, file_out:TextIOWrapper):
-    for line in file_in:
-        file_out.write(waddle(line))
+    for line in input_file:
+        output_file.write(waddle(line))
+    
+    output_file.close()
+    input_file.close()
+
+def copy_static(resource:str):
+    origin_path = __ORIGIN + resource
+    target_path = __TARGET + resource
+    if os.path.isfile(origin_path):
+        shutil.copy(origin_path,target_path)
+    else:
+        if os.path.exists(target_path):
+            shutil.rmtree(target_path)
+        shutil.copytree(origin_path,target_path)
 
 """
-Waddle, a template engine for Python
+Waddle, a simple template engine for Python
 
-1. Remove __TARGET folder content
-2. Proccess templates folder
-3. Add __STATIC_RESOURCES to __TARGET
+Steps: 
+
+1. Proccess templates folder
+2. Add __STATIC_RESOURCES to __TARGET if updated
 
 This script will look inside every template file and check
 if it contains any placeholder and it will try to replace it
@@ -79,31 +79,30 @@ Some examples of their uses:
 - Mi$placeholder\\\ddle <-- if placeholder==VALUE then MiVALUE\ddle
 - scaped \$ dollar      <-- scaped $ dollar
 
-IMPORTANT: This script is **PLATFORM AGNOSTIC**. It'll only work on 
-UNIX-like systems. I don't know enought Python to use the stdlib
-for file transfers
+Allowed characters for key: [ab-z]|[AB-Z]|_
+
+Regrex will match any of the following keys:
+- Hello_world
+- HELLO_WORLD
+- helloworld
+
+Regrex won't match any of the following keys:
+- H6
+- 94
+- 8h
+- hello-world
+- h$y
+- Hello&world
 """
 
 def main():
-    # Read config
-    
-    # Delete folder content
-    os.system(f'rm -fr {__TARGET} && mkdir {__TARGET}')
-
-    # Parse files
+    # Parse template files
     for template_name in __TEMPLATES:
-        open(__TARGET + template_name,'x')
-        output_file = open(__TARGET + template_name,'wt')
-        input_file = open(__ORIGIN + template_name,'rt')
-        
-        compute_template(input_file,output_file)
-        
-        output_file.close()
-        input_file.close()
+       process_template(template_name)
 
-    # Copy static to target
-    copy_static_to_target()
-
+    # Copy static resources to target
+    for resource in __STATIC_RESOURCES:
+        copy_static(resource)
 
 if __name__=='__main__':
     main()
