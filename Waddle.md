@@ -6,7 +6,6 @@ templates on GitHub actions. You can check the workflow [here](.github/workflows
 
 # Requirements
 
-- UNIX-like system (macOS, Ubuntu, FreeBSD,...)
 - Python 3.X
 - [pyyaml](https://pypi.org/project/PyYAML/)
 
