@@ -6,4 +6,3 @@ anyone interested on reaching me out. This website uses a simple
 You can find more information about the engine on [Waddle.md](Waddle.md) or 
 inside the [Python script](Waddle.py) itself. Please note this is a script 
 i made on-the-go without any previous experience on Python. 
-

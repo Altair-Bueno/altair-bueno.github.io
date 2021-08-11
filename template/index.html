@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!--Check for Github Actions $STATIC_GENERATED -->
     <head>
         <!--CSS-->
         <link rel="stylesheet" type="text/css" href="style.css">
@@ -23,9 +22,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <script>
-        //window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-    </script>
+    $JAVA_SCRIPT
     <body>
         <div class="parent">
         <div class="center_element main_div">
@@ -37,19 +34,18 @@
                     <!--Github-->
                     <div class= "icon_container">
                         <a title="$GITHUB_TITLE" href="$GITHUB_URL" target="_blank">
-                            <img class="icon_svg" alt="GitHub" src="res/github.svg">
+                            <img class="icon_svg" alt="GitHub" src="$GITHUB_ICON">
                         </a>
                     </div>
-                    <!--TODO LinkedIn-->
                     <div class= "icon_container">
                         <a title="$LINKEDIN_TITLE" href="$LINKEDIN_URL" target="_blank">
-                            <img class="icon_svg" alt="Linkedin" src="res/linkedin.svg">
+                            <img class="icon_svg" alt="Linkedin" src="$LINKEDIN_ICON">
                         </a>
                     </div>
                     <!--Mail contact-->
                     <div class= "icon_container">
                         <a title="$MAIL_TITLE" href="$MAIL_URL" target="_blank">
-                            <img class="icon_svg" alt="Mail" src="res/mail.svg">
+                            <img class="icon_svg" alt="Mail" src="$MAIL_ICON">
                         </a>
                     </div>
                     <div class="icon_container last">
@@ -63,7 +59,7 @@
     </div>
         <div>
             <footer>
-                <div>@ icon made by <a class="footer_link" href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a class="footer_link" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                $ACKNOWLEDGMENTS
                 <!-- Uncomment this if you are using my template -->
                 <!--
                     $TEMPLATE_CREATOR
@@ -71,5 +67,4 @@
             </footer>
         </div>
     </body>
-    
 </html>
