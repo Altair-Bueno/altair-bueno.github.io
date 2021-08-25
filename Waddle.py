@@ -11,7 +11,7 @@ __CONFIG_FILE = 'config/settings.yaml'
 # Compiled regex
 # fullmatch = 0
 # key = 1
-__REGEX = re.compile(r'[^\\]?(?P<fullmatch>\$(?P<key>([ab-z]|[AB-Z]|_)+)\\?)')
+__REGEX = re.compile(r'(?P<fullmatch>(?P<scaped>\\\$)|(\$(?P<key>([ab-z]|[AB-Z]|_)+)\\?))')
 
 with open(__CONFIG_FILE) as f:
     data = safe_load(f)
@@ -22,11 +22,14 @@ with open(__CONFIG_FILE) as f:
     __REPLACE = data['replace_dic']
 
 def waddle(line:str):
-    for match in re.findall(__REGEX,line):
-        full = match[0]
-        key = match[1]
-        replace = __REPLACE[key]
-        if replace == None:
+    for match in re.finditer(__REGEX,line):
+        full = match.group('fullmatch')
+        key = match.group('key')
+        scaped = match.group('scaped')
+        replace = __REPLACE.get(key)
+        if scaped != None:
+            replace = '$'
+        elif replace == None:
             replace = ''
         line = line.replace(full,replace)
     return line
@@ -76,7 +79,7 @@ Some examples of their uses:
 - <$HTML_TAG>
 - i $word $other_word
 - Mi$placeholder\ddle   <-- if placeholder==VALUE then MiVALUEddle
-- Mi$placeholder\\\ddle <-- if placeholder==VALUE then MiVALUE\ddle
+- Mi$placeholder\\ddle <-- if placeholder==VALUE then MiVALUE\ddle
 - scaped \$ dollar      <-- scaped $ dollar
 
 Allowed characters for key: [ab-z]|[AB-Z]|_
