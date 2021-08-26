@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
+
+###############################################################################
+# Waddle 1.0                                                                  #
+# Altair Bueno MIT license                                                    #
+# https://github.com/Altair-Bueno/altair-bueno.github.io                      #
+#                                                                             #
+# Waddle, a simple template engine for Python                                 #
+###############################################################################
+
+
 import os
+import sys
 import re
 import shutil
 from yaml import safe_load
@@ -7,6 +18,8 @@ from yaml import safe_load
 
 # Where the config file is located
 __CONFIG_FILE = 'config/settings.yaml'
+# If no value was found, replace it with __BLANK
+__BLANK = ''
 
 # Compiled regex
 # fullmatch = 0
@@ -23,14 +36,22 @@ with open(__CONFIG_FILE) as f:
 
 def waddle(line:str):
     for match in re.finditer(__REGEX,line):
+        # Get captured groups if present
         full = match.group('fullmatch')
         key = match.group('key')
         scaped = match.group('scaped')
+        # Try getting from dictionary
         replace = __REPLACE.get(key)
+        enviroment = os.environ.get(key)
+        
         if scaped != None:
             replace = '$'
-        elif replace == None:
-            replace = ''
+        elif replace == None and enviroment == None:
+            print(f"Couldn't find any value for key {key}. Replacing with {__BLANK}", file=sys.stderr)
+            replace = __BLANK
+        else:
+            replace = enviroment
+        
         line = line.replace(full,replace)
     return line
 
@@ -60,17 +81,11 @@ def copy_static(resource:str):
         shutil.copytree(origin_path,target_path)
 
 """
-Waddle, a simple template engine for Python
-
-Steps: 
-
-1. Proccess templates folder
-2. Add __STATIC_RESOURCES to __TARGET if updated
-
-This script will look inside every template file and check
-if it contains any placeholder and it will try to replace it
-using the __CONFIG_FILE dictionary. A placeholder looks like 
-any of the following:
+This script will look inside every template file and check if it contains any 
+placeholder and it will try to replace it using the __CONFIG_FILE dictionary. 
+Additionally, if no value was found on the __CONFIG_FILE dictionary it will 
+search for system enviroment variables that match. A placeholder looks like any 
+of the following:
 - $Hello_World
 - $HELLO
 - $placeholder

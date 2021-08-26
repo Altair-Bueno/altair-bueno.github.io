@@ -34,14 +34,12 @@ replace_dic:
     PROFILEPICTURE_TITLE: "Check the source code"
     PROFILEPICTURE_URL: "https://github.com/Altair-Bueno/altair-bueno.github.io"
     # main div content
+    TITLE: Lorem ipsum dolor sit amet
     MAIN_BODY_CONTENT: |
-        <h1>Lorem ipsum dolor sit amet</h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-            incididunt ut labore et dolore magna aliqua. Elit scelerisque mauris pellentesque 
-            pulvinar. Lorem donec massa sapien faucibus et molestie ac feugiat. A erat nam at 
-            lectus. Nunc non blandit massa enim nec dui nunc. Diam vel quam elementum pulvinar.
-        </p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Elit scelerisque mauris pellentesque 
+        pulvinar. Lorem donec massa sapien faucibus et molestie ac feugiat. A erat nam at 
+        lectus. Nunc non blandit massa enim nec dui nunc. Diam vel quam elementum pulvinar.
     # Other
     ACKNOWLEDGMENTS: |
         <div>@ icon made by <a class="footer_link" href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a class="footer_link" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
@@ -53,4 +51,5 @@ replace_dic:
         <script>
             //window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
         </script>
-
+    LICENSE: |
+        Altair Bueno MIT license
