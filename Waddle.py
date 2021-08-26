@@ -41,17 +41,19 @@ def waddle(line:str):
         key = match.group('key')
         scaped = match.group('scaped')
         # Try getting from dictionary
-        replace = __REPLACE.get(key)
-        enviroment = os.environ.get(key)
+        internal_value = __REPLACE.get(key)
+        enviroment_value = os.environ.get(key)
         
         if scaped != None:
             replace = '$'
-        elif replace == None and enviroment == None:
+        elif internal_value == None and enviroment_value == None:
             print(f"Couldn't find any value for key {key}. Replacing with {__BLANK}", file=sys.stderr)
             replace = __BLANK
-        else:
-            replace = enviroment
-        
+        elif internal_value != None:
+            replace = internal_value
+        elif enviroment_value != None:
+            replace = internal_value
+            
         line = line.replace(full,replace)
     return line
 
