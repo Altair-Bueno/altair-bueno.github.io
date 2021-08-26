@@ -23,6 +23,12 @@ templates on GitHub actions. You can check the workflow [here](.github/workflows
 | `templates` | Templates that need parsing |
 | `replace_dic` | Dictionary of `keys: values`. this values will be replaced on the template|
 
+Additionally, you can replace keys using your system's shell enviroment 
+variables. For example, you can use on a template the variable `$HOME` and it
+will be transformed into `/Users/username`. Please note that config's
+dictionary has preference over the system's enviroment variable, so values will
+first be searched on the provided dictionary
+
 To see examples of usage, check the [settings.yaml](config/settings.yaml)
 
 Once set up everything, run this from the command line on the root folder
@@ -32,7 +38,7 @@ Once set up everything, run this from the command line on the root folder
 python Waddle.py
 ```
 
-> NOTE: Waddle will notify on sterr if any key was missing
+> NOTE: Waddle will notify on `sterr` if any key was missing
 
 # Creating templates
 
