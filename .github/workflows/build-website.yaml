@@ -1,28 +1,83 @@
 name: "Build website"
 on: ["push"]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     name: Generate website
+    env:
+      # Update to minimun screen size that looks good. Use 
+      # 'Safari responsive design'
+      BREAKPOINT_CSS_FOOTER: 650px
+      # Margin between the main div and top of the webpage. Be careful with
+      # iPadOS' Safari
+      MARGIN_TOP_MAIN_DIV: 15vh
+      # webpage
+      WEBSITE_NAME: "Altair Bueno"
+      WEBSITE_URL: "https://altair-bueno.github.io/"
+      PROFILEPICTURE: "https://avatars.githubusercontent.com/u/67512202?v=4"
+      DESCRIPTION: "Altair's business card and contact info"
+      AUTHOR_NAME: "Altair Bueno"
+      # Github icon on div's  bottom left corner
+      GITHUB_TITLE: "Check Altair's projects on GitHub"
+      GITHUB_URL: "https://github.com/Altair-Bueno"
+      GITHUB_ICON: res/github.svg
+      # Linkedin icon on div's  bottom left corner
+      LINKEDIN_TITLE: "Find me in Linkedin"
+      LINKEDIN_URL: "https://example.org" # TODO placeholder link
+      LINKEDIN_ICON: "res/linkedin.svg"
+      # 'at' icon on div's bottom left corner
+      MAIL_TITLE: "Contact me"
+      MAIL_URL: "mailto:business.altair.bueno@outlook.com"
+      MAIL_ICON: "res/mail.svg"
+      # profile picture on the bottom right corner
+      PROFILEPICTURE_TITLE: "Check the source code"
+      PROFILEPICTURE_URL: "https://github.com/Altair-Bueno/altair-bueno.github.io"
+      # main div content
+      TITLE: Lorem ipsum dolor sit amet
+      MAIN_BODY_CONTENT: |
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+          incididunt ut labore et dolore magna aliqua. Elit scelerisque mauris pellentesque 
+          pulvinar. Lorem donec massa sapien faucibus et molestie ac feugiat. A erat nam at 
+          lectus. Nunc non blandit massa enim nec dui nunc. Diam vel quam elementum pulvinar.
+      # Other
+      ACKNOWLEDGMENTS: |
+          <div>@ icon made by <a class="footer_link" href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a class="footer_link" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+      TEMPLATE_CREATOR: |
+          <div>
+              Template made with ❤️ by <a class="footer_link" href="https://github.com/Altair-Bueno">Altair Bueno</a>
+          </div>
+      JAVA_SCRIPT: |
+          <script>
+              //window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+          </script>
+      LICENSE: |
+          Altair Bueno MIT license
+
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with: 
-          python-version: '3.x'
+
+      - name: Delete old page
+        continue-on-error: true
+        run: rm -fr docs/
+      - name: create folder
+        continue-on-error: true
+        run: mkdir docs/
       
-      - name: Install pip dependencies
-        run: pip install pyyaml
-
-      - name: Compile templates
-        run: python Waddle.py
-
-      - name: Delete existing docs/ content
-        continue-on-error: true
-        run: rm -rf docs/
-
-      - name: Copy changed files to docs/ folder
-        continue-on-error: true
-        run: cp -u -R out/ docs/
+      - name: index.html
+        uses: edgardleal/mustache-template-action@v1.0.4
+        with:
+          input: template/index.html.mustache
+          output: docs/index.html
+      - name: style.css
+        uses: edgardleal/mustache-template-action@v1.0.4
+        with:
+          input: template/style.css.mustache
+          output: docs/style.css
+      - name: Copy media
+        run: |
+          mkdir -p docs/res
+          cp -R template/res docs
 
       - name: Push back changes
         continue-on-error: true
