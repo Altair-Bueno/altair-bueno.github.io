@@ -60,6 +60,9 @@ jobs:
       - name: Delete old page
         continue-on-error: true
         run: rm -fr docs/
+      - name: create folder
+        continue-on-error: true
+        run: mkdir docs/
       
       - name: index.html
         uses: edgardleal/mustache-template-action@v1.0.4
