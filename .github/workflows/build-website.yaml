@@ -62,19 +62,19 @@ jobs:
         run: rm -fr docs/
       
       - name: index.html
-        uses: edgardleal/mustache-template-action@v1.0.0
+        uses: edgardleal/mustache-template-action@v1.0.4
         with:
           input: templates/index.html.mustache
           output: docs/index.html
       - name: style.css
-        uses: edgardleal/mustache-template-action@v1.0.0
+        uses: edgardleal/mustache-template-action@v1.0.4
         with:
           input: templates/style.css.mustache
           output: docs/style.css
       - name: Copy media
         run: |
           mkdir -p docs/res
-          cp -R template/res docs/res
+          cp -R template/res docs
 
       - name: Push back changes
         continue-on-error: true
