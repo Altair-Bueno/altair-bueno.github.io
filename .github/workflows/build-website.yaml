@@ -64,12 +64,12 @@ jobs:
       - name: index.html
         uses: edgardleal/mustache-template-action@v1.0.4
         with:
-          input: templates/index.html.mustache
+          input: template/index.html.mustache
           output: docs/index.html
       - name: style.css
         uses: edgardleal/mustache-template-action@v1.0.4
         with:
-          input: templates/style.css.mustache
+          input: template/style.css.mustache
           output: docs/style.css
       - name: Copy media
         run: |
