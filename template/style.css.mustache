@@ -17,7 +17,7 @@ a {
     max-width: 500px;
     display: block;
     margin: auto;
-    margin-top: {{ MARGIN_TOP_MAIN_DIV }};
+    margin-top: {{{ MARGIN_TOP_MAIN_DIV }}};
 }
 .icons {
     display: flex;
@@ -44,7 +44,7 @@ a {
     color: rgb(66, 115, 172);
 }
 
-@media only screen and (max-height: {{ BREAKPOINT_CSS_FOOTER }} ) {
+@media only screen and (max-height: {{{ BREAKPOINT_CSS_FOOTER }}} ) {
     footer {
         padding: 1rem;
         text-align: left;
@@ -53,7 +53,7 @@ a {
 
     }
 }
-@media only screen and (min-height: {{ BREAKPOINT_CSS_FOOTER }} ) {
+@media only screen and (min-height: {{{ BREAKPOINT_CSS_FOOTER }}} ) {
     footer {
         position: absolute;
         right: 0;
