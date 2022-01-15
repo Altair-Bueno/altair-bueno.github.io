@@ -47,10 +47,6 @@ jobs:
           <div>
               Template made with ❤️ by <a class="footer_link" href="https://github.com/Altair-Bueno">Altair Bueno</a>
           </div>
-      JAVA_SCRIPT: |
-          <script>
-              //window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-          </script>
       LICENSE: |
           Altair Bueno MIT license
 
