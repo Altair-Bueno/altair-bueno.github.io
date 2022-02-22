@@ -27,7 +27,7 @@ jobs:
 
       # Linkedin icon on div's  bottom left corner
       LINKEDIN_TITLE: "Find me in Linkedin"
-      LINKEDIN_URL: "https://example.org" # TODO placeholder link
+      LINKEDIN_URL: "https://www.linkedin.com/in/altair-bueno-calvente-92155a232/"
       LINKEDIN_ICON: "res/linkedin.svg"
       
       # '@' icon on div's bottom left corner
