@@ -19,6 +19,9 @@ a {
     margin: auto;
     margin-top: 15vh;
 }
+.invert {
+    filter: invert(1);
+}
 .icons {
     display: flex;
     position: relative;
