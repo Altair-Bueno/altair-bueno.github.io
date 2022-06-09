@@ -56,7 +56,10 @@ jobs:
           </ul>
       # Other
       ACKNOWLEDGMENTS: |
-          <div>@ icon made by <a class="footer_link" href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a class="footer_link" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+          <div>
+            <div>@ icon made by <a class="footer_link" href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a class="footer_link" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <a href="https://www.flaticon.com/free-icons/resume" title="resume icons">Resume icons created by nawicon - Flaticon</a>
+          </div>
       TEMPLATE_CREATOR: |
           <div>
               Template made with ❤️ by <a class="footer_link" href="https://github.com/Altair-Bueno">Altair Bueno</a>
