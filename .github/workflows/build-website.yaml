@@ -34,6 +34,11 @@ jobs:
       MAIL_TITLE: "Contact me"
       MAIL_URL: "mailto:business.altair.bueno@outlook.com"
       MAIL_ICON: "res/mail.svg"
+
+      RESUME_TITLE: "Resume"
+      RESUME_URL: "https://github.com/Altair-Bueno/resume/releases/download/latest/resume.pdf"
+      RESUME_ICON: "res/resume.png"
+      RESUME_CLASS: "invert"
       
       # Profile picture on the bottom right corner
       PROFILEPICTURE_TITLE: "Check the source code"
