@@ -1,4 +1,8 @@
 {
-  "link": "https://altair-bueno.github.io/",
-  "icon": "https://avatars.githubusercontent.com/u/67512202?"
+  "resume": "https://api.github.com/repos/Altair-Bueno/Altair-Bueno/contents/data.json",
+  "user": "https://api.github.com/users/Altair-Bueno",
+  "website": {
+    "link": "https://altair-bueno.github.io/",
+    "icon": "https://avatars.githubusercontent.com/u/67512202"
+  }
 }

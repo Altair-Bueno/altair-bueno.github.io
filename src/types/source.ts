@@ -1,4 +1,4 @@
-export interface Source {
+export interface WebsiteSource {
     icon?:string
     link?:string
 }

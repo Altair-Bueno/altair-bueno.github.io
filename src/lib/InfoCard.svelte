@@ -1,10 +1,10 @@
 <script lang="ts">
     import type {Resume} from "../types/resume";
-    import type {Source} from "../types/source";
+    import type {WebsiteSource} from "../types/source";
     import icons from "../assets/data/icons.json"
 
     export let resume: Resume
-    export let source: Source
+    export let websiteSource: WebsiteSource
 
     $: title = resume?.title
     $: links = Object.entries(resume?.links ? resume?.links : {})
@@ -35,11 +35,11 @@
           </a>
         </li>
       {/each}
-      {#if (source)}
+      {#if (websiteSource)}
         <li class="ml-auto">
-          <a href="{source.link}">
+          <a href="{websiteSource.link}">
             <img class="w-7"
-                 src="{source.icon}"
+                 src="{websiteSource.icon}"
                  alt="Source code">
           </a>
         </li>
