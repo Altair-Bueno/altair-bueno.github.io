@@ -1,0 +1,18 @@
+{
+  "title": "Hello world",
+  "content": {
+    "description": "I'm Altair, a Software Engineering student at UMA",
+    "keypoints": [
+      "Backend first developer",
+      "Fascinated by functional programming",
+      "Focused on building fast & reliable software",
+      "Interested in Microservices, Serverless and Distributed systems"
+    ]
+  },
+  "links": {
+    "GitHub": "https://github.com/Altair-Bueno",
+    "LinkedIn": "Linkedin",
+    "Mail": "mailto:business.altair.bueno@outlook.com",
+    "Resume": "https://github.com/Altair-Bueno/resume/releases/download/latest/resume.pdf"
+  }
+}
