@@ -1,101 +1,40 @@
-name: "Build website"
-on: ["push"]
+# .github/workflows/publish.yml
+name: Generate a build and push to another branch
+
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Generate website
-    env:
-      # Update to minimun screen size that looks good. Use 
-      # 'Safari responsive design'
-      BREAKPOINT_CSS_FOOTER: 650px
-      # Margin between the main div and top of the webpage. Be careful with
-      # iPadOS' Safari
-      MARGIN_TOP_MAIN_DIV: 15vh
-      
-      # webpage
-      WEBSITE_NAME: "Altair Bueno"
-      WEBSITE_URL: "https://altair-bueno.github.io/"
-      PROFILEPICTURE: "https://avatars.githubusercontent.com/u/67512202?v=4"
-      DESCRIPTION: "Altair's business card and contact info"
-      AUTHOR_NAME: "Altair Bueno"
-      
-      # Github icon on div's  bottom left corner
-      GITHUB_TITLE: "Check Altair's projects on GitHub"
-      GITHUB_URL: "https://github.com/Altair-Bueno"
-      GITHUB_ICON: res/github.svg
-
-      # Linkedin icon on div's  bottom left corner
-      LINKEDIN_TITLE: "Find me in Linkedin"
-      LINKEDIN_URL: "https://www.linkedin.com/in/altair-bueno-calvente-92155a232/"
-      LINKEDIN_ICON: "res/linkedin.svg"
-      
-      # '@' icon on div's bottom left corner
-      MAIL_TITLE: "Contact me"
-      MAIL_URL: "mailto:business.altair.bueno@outlook.com"
-      MAIL_ICON: "res/mail.svg"
-
-      RESUME_TITLE: "Resume"
-      RESUME_URL: "https://github.com/Altair-Bueno/resume/releases/download/latest/resume.pdf"
-      RESUME_ICON: "res/resume.png"
-      RESUME_CLASS: "invert"
-      
-      # Profile picture on the bottom right corner
-      PROFILEPICTURE_TITLE: "Check the source code"
-      PROFILEPICTURE_URL: "https://github.com/Altair-Bueno/altair-bueno.github.io"
-      
-      # Main div content
-      TITLE: Hello, world!
-      MAIN_BODY_CONTENT: |
-          I'm Altair, a Software Engineering student at UMA
-          <ul>
-            <li>Backend first developer</li>
-            <li>Fascinated by functional programming</li>
-            <li>Focused on building fast & reliable software</li>
-            <li>Interested in Microservices, Serverless and Distributed systems</li>
-          </ul>
-      # Other
-      ACKNOWLEDGMENTS: |
-          <div>
-            <div>@ icon made by <a class="footer_link" href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a class="footer_link" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-            <div>Resume icon made by <a class="footer_link" href="https://www.flaticon.com/authors/nawicon" title="nawicon">nawicon</a> from <a class="footer_link" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-          </div>
-      TEMPLATE_CREATOR: |
-          <div>
-              Template made with ❤️ by <a class="footer_link" href="https://github.com/Altair-Bueno">Altair Bueno</a>
-          </div>
-      LICENSE: |
-          Altair Bueno MIT license
+    name: Build and Push
     steps:
-      - uses: actions/checkout@v2
+      - name: git-checkout
+        uses: actions/checkout@v2
 
-      - name: Delete old page
-        continue-on-error: true
-        run: rm -fr docs/
-      - name: create folder
-        continue-on-error: true
-        run: mkdir docs/
-      
-      - name: index.html
-        uses: edgardleal/mustache-template-action@v1.0.4
-        with:
-          input: template/index.html.mustache
-          output: docs/index.html
-      - name: style.css
-        uses: edgardleal/mustache-template-action@v1.0.4
-        with:
-          input: template/style.css.mustache
-          output: docs/style.css
-      - name: Copy media
+      - name: Get npm cache directory
+        id: npm-cache-dir
         run: |
-          mkdir -p docs/res
-          cp -R template/res docs
+          echo "::set-output name=dir::$(npm config get cache)"
+      - uses: actions/cache@v3
+        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-      - name: Push back changes
-        continue-on-error: true
-        run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
-          git add -f docs/
-          git commit -am "Generated website"
-          git push
+      - name: Install all dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
