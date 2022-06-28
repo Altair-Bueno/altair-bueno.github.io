@@ -37,7 +37,7 @@
       {/each}
       {#if (websiteSource)}
         <li class="ml-auto">
-          <a href="{websiteSource.link}">
+          <a href="{websiteSource.link}" target="_blank">
             <img class="w-7"
                  src="{websiteSource.icon}"
                  alt="Source code">
