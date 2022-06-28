@@ -3,7 +3,7 @@
     import Footer from "./lib/Footer.svelte";
     import Spinner from "./lib/Spinner.svelte";
     import Error from "./lib/Error.svelte";
-    import Events from "./lib/Events.svelte";
+    import Events from "./lib/SideBar.svelte";
 
     import config from "./assets/data/config.json"
     import acknowledgments from "./assets/data/acknowledgments.json"
