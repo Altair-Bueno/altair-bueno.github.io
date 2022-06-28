@@ -3,9 +3,17 @@
     "link": "https://api.github.com/repos/Altair-Bueno/Altair-Bueno/contents/data.json",
     "request": {
       "headers": {
-        "Accept": "application/vnd.github.VERSION.raw"
+        "Accept": "application/vnd.github.v3.raw"
       },
       "cache": "default"
+    }
+  },
+  "events": {
+    "link": "https://api.github.com/users/Altair-Bueno/events",
+    "request": {
+      "headers": {
+        "Accept": "application/vnd.github.v3+json"
+      }
     }
   },
   "user": {
