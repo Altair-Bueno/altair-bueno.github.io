@@ -12,7 +12,7 @@
     $: description = resume?.content?.description
     $: keypoints = resume?.content?.keypoints
 </script>
-<div class="bg-zinc-800 text-gray-50 text-xl rounded-2xl p-5 block m-1">
+<div class="bg-teal-100 dark:bg-zinc-800 dark:text-gray-50 text-xl rounded-2xl p-5 block m-1">
   <!--    Description-->
   <div class="mb-8">
     <h1 class="text-4xl font-extrabold mb-3">{title}</h1>
@@ -31,7 +31,7 @@
       {#each entries as [name, link]}
         <li>
           <a target="_blank" href="{link}">
-            <img src="{icons[name]}" alt="{name}" class="w-7"/>
+            <img src="{icons[name]}" alt="{name}" class="w-7 dark:invert"/>
           </a>
         </li>
       {/each}
