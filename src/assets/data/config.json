@@ -1,0 +1,19 @@
+{
+  "resume": {
+    "link": "https://api.github.com/repos/Altair-Bueno/Altair-Bueno/contents/data.json",
+    "request": {
+      "headers": {
+        "Accept": "application/vnd.github.VERSION.raw"
+      },
+      "cache": "default"
+    }
+  },
+  "user": {
+    "link": "https://api.github.com/users/Altair-Bueno",
+    "request": {}
+  },
+  "websiteSource": {
+    "link": "https://github.com/Altair-Bueno/altair-bueno.github.io",
+    "icon": "https://avatars.githubusercontent.com/u/67512202"
+  }
+}

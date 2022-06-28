@@ -3,13 +3,12 @@
     import Footer from "./lib/Footer.svelte";
 
     import spinner from './assets/spinner.svg'
-    import source from "./assets/data/source.json"
+    import config from "./assets/data/config.json"
     import acknowledgments from "./assets/data/acknowledgments.json"
 
-    const resumePromise = fetch(source.resume, {
-        headers: {"Accept": "application/vnd.github.VERSION.raw"},
-        cache: "default"
-    }).then(x => x.json())
+    const {websiteSource,resume} = config
+
+    const resumePromise = fetch(resume.link,resume.request).then(x => x.json())
 
 </script>
 <main class="flex flex-col w-full h-screen">
@@ -17,7 +16,7 @@
     {#await resumePromise}
       <img src="{spinner}" alt="" class="invert w-24"/>
     {:then resume}
-      <InfoCard {resume} websiteSource="{source.website}"/>
+      <InfoCard {resume} {websiteSource}/>
     {:catch error}
       <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
            role="alert">
