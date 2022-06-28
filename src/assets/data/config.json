@@ -23,5 +23,29 @@
   "websiteSource": {
     "link": "https://github.com/Altair-Bueno/altair-bueno.github.io",
     "icon": "https://avatars.githubusercontent.com/u/67512202"
-  }
+  },
+  "acknowledgments": [
+    {
+      "iconName": "@",
+      "author": {
+        "name": "Those Icons",
+        "link": "https://www.flaticon.com/authors/those-icons"
+      },
+      "website": {
+        "name": "www.flaticon.com",
+        "link": "https://www.flaticon.com/"
+      }
+    },
+    {
+      "iconName": "Resume",
+      "author": {
+        "name": "nawicon",
+        "link": "https://www.flaticon.com/authors/nawicon"
+      },
+      "website": {
+        "name": "www.flaticon.com",
+        "link": "https://www.flaticon.com/"
+      }
+    }
+  ]
 }

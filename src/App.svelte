@@ -6,9 +6,8 @@
     import Events from "./lib/SideBar.svelte";
 
     import config from "./assets/data/config.json"
-    import acknowledgments from "./assets/data/acknowledgments.json"
 
-    const {websiteSource, resume, events} = config
+    const {websiteSource, resume, events, acknowledgments} = config
     const resumePromise = fetch(resume.link, resume.request).then(x => x.json())
     const eventsPromise = fetch(events.link, events.request).then(x => x.json())
     const all = Promise.all([resumePromise, eventsPromise]);
