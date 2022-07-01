@@ -12,14 +12,14 @@
     $: description = resume?.content?.description
     $: keypoints = resume?.content?.keypoints
 </script>
-<div class="bg-teal-100 dark:bg-zinc-800 dark:text-gray-50 text-xl rounded-2xl p-5 block m-1">
+<article class="bg-teal-100 dark:bg-zinc-800 dark:text-gray-50 text-xl rounded-2xl p-5 block m-1">
   <!--    Description-->
   <div class="mb-8">
     <h1 class="text-4xl font-extrabold mb-3">{title}</h1>
     <p class="mb-3">{description}</p>
     {#if (keypoints)}
       <ul class="list-disc pl-10">
-        {#each keypoints as keypoint}
+        {#each keypoints as keypoint (keypoint)}
           <li>{keypoint}</li>
         {/each}
       </ul>
@@ -28,7 +28,7 @@
   <!--    LinkedIn, GitHub, Resume...-->
   <div>
     <ul class="flex flex-row gap-5">
-      {#each entries as [name, link]}
+      {#each entries as [name, link] (name)}
         <li>
           <a target="_blank" href="{link}">
             <img src="{icons[name]}" alt="{name}" class="w-7 dark:invert"/>
@@ -46,4 +46,4 @@
       {/if}
     </ul>
   </div>
-</div>
+</article>
