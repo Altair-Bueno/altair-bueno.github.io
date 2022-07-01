@@ -13,18 +13,20 @@
     const all = Promise.all([resumePromise, eventsPromise]);
 
 </script>
-<div class="flex flex-col w-full h-screen">
-  <div class="grid place-content-center mt-24">
-    <main>
-      {#await all}
-        <Spinner/>
-      {:then [resume, events]}
+<div class="flex flex-col w-screen h-screen items-center">
+  <div class="flex flex-col md:flex-row gap-4 m-4 mt-24">
+    {#await all}
+      <Spinner/>
+    {:then [resume, events]}
+      <main>
         <InfoCard {resume} {websiteSource}/>
+      </main>
+      <aside>
         <Events {events}/>
-      {:catch error}
-        <Error/>
-      {/await}
-    </main>
+      </aside>
+    {:catch error}
+      <Error/>
+    {/await}
   </div>
   <footer class="mt-auto w-full">
     <Footer {acknowledgments}/>
