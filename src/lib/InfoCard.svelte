@@ -18,7 +18,7 @@
     <h1 class="text-4xl font-extrabold mb-3">{title}</h1>
     <p class="mb-3">{description}</p>
     {#if (keypoints)}
-      <ul class="list-disc pl-10">
+      <ul class="list-disc list-inside">
         {#each keypoints as keypoint (keypoint)}
           <li>{keypoint}</li>
         {/each}
