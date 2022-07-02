@@ -51,9 +51,9 @@
   <h2 class="text-xl">
     Latest updates
   </h2>
-  <ul class="mt-2 grid grid-cols-2">
+  <ul class="mt-2 grid sm:grid-cols-2 md:grid-cols-1">
     {#each updates as update (update.id)}
-      <li class="col-span-1 md:col-span-2">
+      <li class="col-span-1">
         <SideBarEvent {...update}/>
       </li>
     {/each}
