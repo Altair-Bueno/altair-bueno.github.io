@@ -1,5 +1,6 @@
 <script lang="ts">
     import {Acknowledgment} from '../types/acknowledgment'
+    import Link from "./Link.svelte";
 
     export let acknowledgments: Acknowledgment[]
 </script>
@@ -9,16 +10,8 @@
       <ul>
         {#each acknowledgments as ack}
           <li>
-            {ack.iconName} icon made by
-            <a href="{ack.author.link}"
-               class="underline text-emerald-700 visited:text-emerald-900 dark:text-emerald-400 dark:visited:text-emerald-700">
-              {ack.author.name}
-            </a>
-            from <a
-                  class="underline text-emerald-700 visited:text-emerald-900 dark:text-emerald-400 dark:visited:text-emerald-700"
-                  href="{ack.website.link}">
-            {ack.website.name}
-          </a>
+            {ack.iconName} icon made by <Link target="_blank" href="{ack.author.link}">{ack.author.name}</Link>
+            from <Link target="_blank" href="{ack.website.link}">{ack.website.name}</Link>
           </li>
         {/each}
       </ul>
