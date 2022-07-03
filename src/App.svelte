@@ -14,7 +14,7 @@
 
 </script>
 <div class="flex flex-col w-screen h-screen items-center">
-  <div class="flex flex-col md:flex-row gap-4 m-4 mt-24">
+  <div class="flex flex-col md:flex-row gap-4 m-4 md:mt-24">
     {#await all}
       <Spinner/>
     {:then [resume, events]}
