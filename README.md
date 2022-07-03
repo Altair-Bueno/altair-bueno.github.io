@@ -1,4 +1,14 @@
-### Altair Bueno's website
+# [altair-bueno.github.io](https://altair-bueno.github.io)
 
-It contains business information about me, as well as my contact e-mail for
-anyone interested on reaching me out.
+Contains the source code of my personal website, deployed on GitHub Pages
+
+# Build instructions
+
+```shell
+# First install the required dependencies
+npm install
+# Run a dev server
+npm run dev
+# Build for production
+npm run build
+```
