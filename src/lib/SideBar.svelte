@@ -1,6 +1,7 @@
 <script lang="ts">
     import {EventType, GitHubEvent} from "../types/event"
     import SideBarEvent from "./SideBarElement.svelte";
+    import Squircle from "./Squircle.svelte";
 
     export let minElements = 4
     export let events: GitHubEvent[] = []
@@ -47,7 +48,7 @@
         .map(eventToUpdate)
 
 </script>
-<div class="bg-teal-100 dark:bg-zinc-800 dark:text-gray-50 rounded-2xl p-5 block m-1">
+<Squircle>
   <h2 class="text-xl">
     Latest updates
   </h2>
@@ -58,4 +59,4 @@
       </li>
     {/each}
   </ul>
-</div>
+</Squircle>
