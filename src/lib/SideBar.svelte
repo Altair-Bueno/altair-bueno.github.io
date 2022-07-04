@@ -15,17 +15,17 @@
         link: string
         date: Date
     }
+    type EventToUpdate = (event: GitHubEvent) => Update
 
     const createUpdate = (event, title, description?, link?) => {
         const id = event.id
         const date = new Date(event.created_at)
-        //title = "sldkfjj asj kafjk jajsj jasjk fdjas klfjasjdf askfjlasjdfjasl jfajskdl fjaksjf sajdl fj"
         description = description ? description : event.repo.name
         link = link ? link : `https://github.com/${event.repo.name}`
         return {id, title, description, link, date}
     }
 
-    const strategies = new Map() as Map<EventType, (event: GitHubEvent) => Update>
+    const strategies = new Map() as Map<EventType, EventToUpdate>
     strategies.set(EventType.IssuesEvent, (event) => createUpdate(event,
         event.payload.issue.title,
         `${event.payload.action.charAt(0).toUpperCase() + event.payload.action.slice(1)} issue`,
@@ -37,22 +37,14 @@
         event.payload.pull_request.html_url
     ))
 
-    function eventToUpdate(event: GitHubEvent) {
-        const strategy = strategies.get(event.type)
-        return strategy(event)
-    }
-
-    function eventFilter(event: GitHubEvent) {
-        return strategies.has(event.type)
-    }
-
     function toggleAll() {
         nupdates = nupdates ? undefined : minElements
     }
 
-    $: updates = events.filter(eventFilter)
-        .slice(0, nupdates)
-        .map(eventToUpdate)
+    $: updates = events.flatMap(x => {
+        const strategy = strategies.get(x.type)
+        return strategy ? [strategy(x)] : []
+    }).slice(0, nupdates)
 
 </script>
 <Squircle>
