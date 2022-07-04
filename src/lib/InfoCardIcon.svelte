@@ -4,7 +4,7 @@
     export let src: string
     export let alt: string
 
-    $: classes = `w-7 transition ease-in-out delay-150 hover:scale-110 duration-100 ${$$props.class || ''}`
+    $: classes = `w-7 motion-safe:transition motion-safe:ease-in-out motion-safe:hover:scale-110 motion-safe:duration-200 ${$$props.class || ''}`
 
 </script>
 <a {href} {target}>
