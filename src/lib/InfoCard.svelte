@@ -3,6 +3,7 @@
     import type {WebsiteSource} from "../types/source";
     import icons from "../assets/data/icons.json"
     import Squircle from "./Squircle.svelte";
+    import InfoCardIcon from "./InfoCardIcon.svelte";
 
     export let resume: Resume
     export let websiteSource: WebsiteSource
@@ -30,18 +31,12 @@
       <ul class="flex flex-row gap-5">
         {#each entries as [name, link] (name)}
           <li>
-            <a target="_blank" href="{link}">
-              <img src="{icons[name]}" alt="{name}" class="w-7 dark:invert"/>
-            </a>
+            <InfoCardIcon target="_blank" href="{link}" src="{icons[name]}" alt="{name}" class="dark:invert"/>
           </li>
         {/each}
         {#if (websiteSource)}
           <li class="ml-auto">
-            <a href="{websiteSource.link}" target="_blank">
-              <img class="w-7"
-                   src="{websiteSource.icon}"
-                   alt="Source code">
-            </a>
+            <InfoCardIcon target="_blank" href="{websiteSource.link}" src="{websiteSource.icon}" alt="Source code"/>
           </li>
         {/if}
       </ul>
