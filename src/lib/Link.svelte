@@ -1,5 +1,5 @@
 <script lang="ts">
-  type Kind = 'normal' | 'dimmed'
+  type Kind = 'normal'
   export let href: string | URL | undefined = undefined
   export let target: string | undefined = undefined
   export let kind: Kind = "normal"
@@ -8,9 +8,10 @@
   let classes
   $: {
       if (kind === 'normal') {
-          classes = "text-emerald-900 dark:text-emerald-400 dark:hover:text-emerald-500 dark:visited:text-emerald-700"
+          classes = "text-lime-600 hover:text-lime-700 visited:text-lime-900" + " " +
+              "dark:text-emerald-400 dark:hover:text-emerald-500 dark:visited:text-emerald-700"
       } else if (kind === 'dimmed'){
-          classes = "text-emerald-700 visited:text-emerald-900 dark:text-emerald-400 dark:visited:text-emerald-700"
+          classes = ""
       }
       classes = `${baseClasses} ${classes} ${$$props.class}`
   }

@@ -26,9 +26,16 @@
     }
 
     const strategies = new Map() as Map<EventType, (event: GitHubEvent) => Update>
-    //strategies.set(EventType.PushEvent, (event: GitHubEvent) => createUpdate(event, `Pushed ${event.payload.commits.length} commit${event.payload.commits.length > 1 ? "s" : ""} to ${event.payload.ref.replace("refs/heads/","")}`))
-    strategies.set(EventType.IssuesEvent, (event) => createUpdate(event, event.payload.issue.title, `${event.payload.action.charAt(0).toUpperCase() + event.payload.action.slice(1)} issue`, event.payload.issue.html_url))
-    strategies.set(EventType.PullRequestEvent, (event) => createUpdate(event, event.payload.pull_request.title, `${event.payload.action.charAt(0).toUpperCase() + event.payload.action.slice(1)} pull request`, event.payload.pull_request.html_url))
+    strategies.set(EventType.IssuesEvent, (event) => createUpdate(event,
+        event.payload.issue.title,
+        `${event.payload.action.charAt(0).toUpperCase() + event.payload.action.slice(1)} issue`,
+        event.payload.issue.html_url
+    ))
+    strategies.set(EventType.PullRequestEvent, (event) => createUpdate(event,
+        event.payload.pull_request.title,
+        `${event.payload.action.charAt(0).toUpperCase() + event.payload.action.slice(1)} pull request`,
+        event.payload.pull_request.html_url
+    ))
 
     function eventToUpdate(event: GitHubEvent) {
         const strategy = strategies.get(event.type)
