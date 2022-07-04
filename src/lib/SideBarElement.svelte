@@ -13,7 +13,7 @@
   <h3 class="text-md">
     <Link href="{link}" target="_blank">{title}</Link>
   </h3>
-  <div class="text-gray-800 dark:text-gray-400 text-md">
+  <div class="text-gray-800 dark:text-gray-400 text-md flex justify-between">
     <span>{description}</span>
     <span>{timestamp}</span>
   </div>
