@@ -52,7 +52,7 @@
   <h2 class="text-xl">
     Latest updates
   </h2>
-  <ul class="mt-2 grid sm:grid-cols-2 md:grid-cols-1">
+  <ul class="mt-2 grid sm:grid-cols-2 md:grid-cols-1 gap-3">
     {#each updates as update (update.id)}
       <li class="col-span-1">
         <SideBarEvent {...update}/>

@@ -9,7 +9,7 @@
     $: timestamp = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`
 
 </script>
-<article class="max-w-md">
+<article class="max-w-md hover:shadow-2xl hover:bg-red-300 hover:dark:bg-slate-900 p-2 rounded-xl">
   <h3 class="text-md">
     <Link href="{link}" target="_blank">{title}</Link>
   </h3>
