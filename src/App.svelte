@@ -7,9 +7,20 @@
 
     import config from "./assets/data/config.json"
 
+    async function handleResponse<T>(response:Response):Promise<T> {
+        const ok = response.ok
+        const content = await response.json()
+
+        if (ok) {
+            return content as T
+        } else {
+            throw new Error(content.message)
+        }
+    }
+
     const {websiteSource, resume, events, acknowledgments} = config
-    const resumePromise = fetch(resume.link, resume.request).then(x => x.json())
-    const eventsPromise = fetch(events.link, events.request).then(x => x.json())
+    const resumePromise = fetch(resume.link, resume.request).then(handleResponse)
+    const eventsPromise = fetch(events.link, events.request).then(handleResponse)
     const all = Promise.all([resumePromise, eventsPromise]);
 
 </script>
@@ -25,7 +36,7 @@
         <Events {events}/>
       </aside>
     {:catch error}
-      <Error/>
+      <Error message="{error.toString()}"/>
     {/await}
   </div>
   <footer class="mt-auto w-full">
