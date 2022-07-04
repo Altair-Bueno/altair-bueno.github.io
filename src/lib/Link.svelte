@@ -8,7 +8,7 @@
   let classes
   $: {
       if (kind === 'normal') {
-          classes = "text-lime-600 hover:text-lime-700 visited:text-lime-900" + " " +
+          classes = "text-blue-800 hover:text-purple-700 visited:text-purple-900" + " " +
               "dark:text-emerald-400 dark:hover:text-emerald-500 dark:visited:text-emerald-700"
       } else if (kind === 'dimmed'){
           classes = ""
