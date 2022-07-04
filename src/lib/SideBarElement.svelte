@@ -10,7 +10,7 @@
     $: timestamp = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`
 
 </script>
-<article class="max-w-md hover:shadow-2xl hover:bg-rose-300 hover:dark:bg-slate-900 p-2 rounded-xl">
+<article class="max-w-md hover:shadow-2xl hover:bg-rose-300 hover:dark:bg-neutral-800 p-2 rounded-xl">
   <h3 class="text-md">
     <Link href="{link}" target="_blank">
       <SvelteMarkdown isInline source="{title}"/>
