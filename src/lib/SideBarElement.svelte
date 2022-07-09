@@ -7,7 +7,7 @@
     export let link: string
     export let date: Date
 
-    $: timestamp = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`
+    $: timestamp = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
 
 </script>
 <article class="max-w-md hover:shadow-2xl hover:bg-rose-300 hover:dark:bg-neutral-800 p-2 rounded-xl">
