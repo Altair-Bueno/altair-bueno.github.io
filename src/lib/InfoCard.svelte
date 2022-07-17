@@ -10,7 +10,7 @@
 
     $: title = resume?.title
     $: links = Object.entries(resume?.links ? resume?.links : {})
-    $: entries = links ? links : []
+    $: entries = (links ? links : []) as [string, string][]
     $: description = resume?.content?.description
     $: keypoints = resume?.content?.keypoints
 </script>

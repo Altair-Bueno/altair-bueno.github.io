@@ -1,13 +1,4 @@
-<script lang="ts">
-    import {EventType, GitHubEvent} from "../types/github"
-    import SideBarEvent from "./SideBarElement.svelte";
-    import Squircle from "./Squircle.svelte";
-
-    export let minElements = 4
-    export let events: GitHubEvent[] = []
-
-    let nupdates: number | undefined = minElements
-
+<script context=module lang="ts">
     interface Update {
         id: string
         title: string
@@ -17,7 +8,7 @@
     }
     type EventToUpdate = (event: GitHubEvent) => Update
 
-    const createUpdate = (event, title, description?, link?) => {
+    function createUpdate(event:GitHubEvent, title:string, description?: string, link?: string): Update{
         const id = event.id
         const date = new Date(event.created_at)
         description = description ? description : event.repo.name
@@ -36,16 +27,21 @@
         `${event.payload.action.charAt(0).toUpperCase() + event.payload.action.slice(1)} pull request`,
         event.payload.pull_request.html_url
     ))
+</script>
+<script lang="ts">
+    import {EventType, GitHubEvent} from "../types/github"
+    import SideBarEvent from "./SideBarElement.svelte";
+    import Squircle from "./Squircle.svelte";
 
-    function toggleAll() {
-        nupdates = nupdates ? undefined : minElements
-    }
+    export let minElements = 4
+    export let events: GitHubEvent[] = []
+
+    let nupdates: number | undefined = minElements
 
     $: updates = events.flatMap(x => {
         const strategy = strategies.get(x.type)
         return strategy ? [strategy(x)] : []
     }).slice(0, nupdates)
-
 </script>
 <Squircle>
   <h2 class="text-xl">

@@ -1,11 +1,11 @@
 <script lang="ts">
   type Kind = 'normal'
-  export let href: string | URL | undefined = undefined
+  export let href: string | null | undefined = undefined
   export let target: string | undefined = undefined
   export let kind: Kind = "normal"
 
   const baseClasses = 'underline'
-  let classes
+  let classes = ''
   $: {
       if (kind === 'normal') {
           classes = "text-blue-800 hover:text-purple-700 visited:text-purple-900" + " " +

@@ -23,6 +23,6 @@ export interface Content {
   keypoints: string[];
 }
 export interface WebsiteSource {
-  icon?: string;
-  link?: string;
+  icon: string;
+  link: string;
 }
