@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Acknowledgment} from '../types/acknowledgment'
+    import type {Acknowledgment} from '../types'
     import Link from "./Link.svelte";
 
     export let acknowledgments: Acknowledgment[]

@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type {Resume} from "../types/resume";
-    import type {WebsiteSource} from "../types/source";
+    import type {Resume} from "../types";
+    import type {WebsiteSource} from "../types";
     import icons from "../assets/data/icons.json"
     import Squircle from "./Squircle.svelte";
     import InfoCardIcon from "./InfoCardIcon.svelte";

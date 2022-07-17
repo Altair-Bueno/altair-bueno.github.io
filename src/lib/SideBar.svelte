@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {EventType, GitHubEvent} from "../types/event"
+    import {EventType, GitHubEvent} from "../types/github"
     import SideBarEvent from "./SideBarElement.svelte";
     import Squircle from "./Squircle.svelte";
 

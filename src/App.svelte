@@ -19,7 +19,7 @@
     }
 
     const {websiteSource, resume, events, acknowledgments} = config
-    const resumePromise = fetch(resume.link, resume.request).then(handleResponse)
+    const resumePromise = fetch(resume.link, resume.request).then<>(handleResponse)
     const eventsPromise = fetch(events.link, events.request).then(handleResponse)
     const all = Promise.all([resumePromise, eventsPromise]);
 
