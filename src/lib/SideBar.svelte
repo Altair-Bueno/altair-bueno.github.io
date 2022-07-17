@@ -56,6 +56,10 @@
       <li class="col-span-1">
         <SideBarEvent {...update}/>
       </li>
+    {:else}
+    <span class="text-gray-800 dark:text-gray-400">
+      Nothing new... yet
+    </span>
     {/each}
   </ul>
 </Squircle>
