@@ -27,6 +27,6 @@
     "vite": "^3.0.0"
   },
   "dependencies": {
-    "svelte-markdown": "^0.2.2"
+    "svelte-markdown": "^0.2.3"
   }
 }
