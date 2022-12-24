@@ -1,4 +1,7 @@
 <script lang="ts">
+  import type { Resume } from "./types";
+  import type { GitHubEvent } from "./types/github";
+
   import InfoCard from "./lib/InfoCard.svelte";
   import Footer from "./lib/Footer.svelte";
   import Spinner from "./lib/Spinner.svelte";
@@ -19,11 +22,13 @@
   }
 
   const { websiteSource, resume, events, acknowledgments } = config;
-  const resumePromise = fetch(resume.link, resume.request).then(
+  const resumePromise = fetch(resume.link, resume.request as RequestInit).then(
     handleResponse
   );
   const eventsPromise = fetch(events.link, events.request).then(handleResponse);
-  const all = Promise.all([resumePromise, eventsPromise]);
+  const all = Promise.all([resumePromise, eventsPromise]) as Promise<
+    [Resume, GitHubEvent[]]
+  >;
 </script>
 
 <div class="flex flex-col w-screen h-screen items-center">

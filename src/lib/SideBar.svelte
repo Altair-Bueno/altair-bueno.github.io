@@ -47,7 +47,7 @@
 </script>
 
 <script lang="ts">
-  import { EventType, GitHubEvent } from "../types/github";
+  import { EventType, type GitHubEvent } from "../types/github";
   import SideBarEvent from "./SideBarElement.svelte";
   import Squircle from "./Squircle.svelte";
 
