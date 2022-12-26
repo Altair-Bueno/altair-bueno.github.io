@@ -4,8 +4,7 @@
     "request": {
       "headers": {
         "Accept": "application/vnd.github.v3.raw"
-      },
-      "cache": "default"
+      }
     }
   },
   "events": {

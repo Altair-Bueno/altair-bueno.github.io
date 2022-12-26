@@ -1,3 +1,5 @@
+export * from "./github";
+
 export interface Acknowledgment {
   iconName: string;
   author: Subject;

@@ -1,10 +1,9 @@
 <script lang="ts">
   type Kind = "normal";
-  export let href: string | null | undefined = undefined;
+  export let href: string | undefined = undefined;
   export let target: string | undefined = undefined;
   export let kind: Kind = "normal";
 
-  const baseClasses = "underline";
   let classes = "";
   $: {
     if (kind === "normal") {
@@ -15,7 +14,7 @@
     } else if (kind === "dimmed") {
       classes = "";
     }
-    classes = `${baseClasses} ${classes} ${$$props.class}`;
+    classes = `underline ${classes} ${$$props.class ?? ""}`;
   }
 </script>
 
