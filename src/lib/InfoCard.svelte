@@ -1,7 +1,8 @@
 <script lang="ts">
   import type { Resume } from "../types";
   import type { WebsiteSource } from "../types";
-  import icons from "../assets/data/icons.json";
+  import _icons from "../assets/data/icons.json";
+  const icons = _icons as Record<string, string>;
   import Squircle from "./Squircle.svelte";
   import InfoCardIcon from "./InfoCardIcon.svelte";
 
