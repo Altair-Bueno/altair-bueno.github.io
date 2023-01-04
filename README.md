@@ -6,9 +6,9 @@ Contains the source code of my personal website, deployed on GitHub Pages
 
 ```shell
 # First install the required dependencies
-npm install
+pnpm install
 # Run a dev server
-npm run dev
+pnpm run dev
 # Build for production
-npm run build
+pnpm run build
 ```
