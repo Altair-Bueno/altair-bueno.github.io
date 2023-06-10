@@ -1,19 +1,12 @@
 ---
-interface Props {
-  readonly title?: string;
-  readonly description?: string;
-  readonly favicon?: string;
-  readonly url?: string;
-  readonly author?: string;
-}
+import metadata from "../json/metadata.json" assert { type: "json" };
 
-const {
-  title = "Altair Bueno",
-  description = "Altair's business card and contact info",
-  favicon = "https://avatars.githubusercontent.com/u/67512202?v=4",
-  url = "https://altair-bueno.github.io/",
-  author = "Altair Bueno",
-} = Astro.props;
+type Props = Partial<typeof metadata>;
+
+const { title, description, image, favicon, url, author } = {
+  ...metadata,
+  ...Astro.props,
+};
 ---
 
 <!DOCTYPE html>
@@ -27,7 +20,7 @@ const {
     <meta content={url} property="og:url" />
     <meta content={title} property="og:title" />
     <meta content={description} property="og:description" />
-    <meta content={favicon} property="og:image" />
+    <meta content={image} property="og:image" />
     <meta content={title} name="twitter:title" />
 
     <!--About info-->
