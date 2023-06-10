@@ -1,0 +1,46 @@
+---
+interface Props {
+  readonly title?: string;
+  readonly description?: string;
+  readonly favicon?: string;
+  readonly url?: string;
+  readonly author?: string;
+}
+
+const {
+  title = "Altair Bueno",
+  description = "Altair's business card and contact info",
+  favicon = "https://avatars.githubusercontent.com/u/67512202?v=4",
+  url = "https://altair-bueno.github.io/",
+  author = "Altair Bueno",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--Favicon-->
+    <link href={favicon} rel="icon" type="image/png" />
+    <!--Content, preview and name-->
+    <title>{title}</title>
+    <meta content="website" property="og:type" />
+    <meta content={url} property="og:url" />
+    <meta content={title} property="og:title" />
+    <meta content={description} property="og:description" />
+    <meta content={favicon} property="og:image" />
+    <meta content={title} name="twitter:title" />
+
+    <!--About info-->
+    <meta content={author} name="author" />
+    <meta content={description} name="description" />
+
+    <!--Page config-->
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  </head>
+  <body class="bg-neutral-100 dark:bg-neutral-800">
+    <slot />
+  </body>
+</html>
