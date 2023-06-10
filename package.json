@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "fmt": "prettier --write --plugin=prettier-plugin-{astro,svelte} **/*.{js,ts,jsx,tsx,vue,md,astro,svelte} || true"
+    "fmt": "prettier --write **/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue} || true"
   },
   "dependencies": {
     "@astrojs/svelte": "^3.0.0",
@@ -23,5 +23,11 @@
     "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.10.0",
     "prettier-plugin-svelte": "^2.10.1"
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-astro",
+      "prettier-plugin-svelte"
+    ]
   }
 }
