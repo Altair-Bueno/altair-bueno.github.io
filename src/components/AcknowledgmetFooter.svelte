@@ -1,6 +1,21 @@
+<script context="module" lang="ts">
+  export type Website = {
+    readonly name: string;
+    readonly link: string;
+  };
+  export type Author = {
+    readonly name: string;
+    readonly link: string;
+  };
+  export type Acknowledgment = {
+    readonly iconName: string;
+    readonly author: Author;
+    readonly website: Website;
+  };
+</script>
+
 <script lang="ts">
-  import type { Acknowledgment } from "../types";
-  import Link from "./Link.svelte";
+  import Link from "./util/Link.svelte";
 
   export let acknowledgments: Acknowledgment[];
 </script>
