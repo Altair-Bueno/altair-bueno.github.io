@@ -12,13 +12,13 @@
     "fmt": "prettier --write **/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue} || true"
   },
   "dependencies": {
-    "@astrojs/svelte": "^3.0.0",
+    "@astrojs/svelte": "^3.1.0",
     "@astrojs/tailwind": "^3.1.3",
-    "astro": "^2.6.2",
-    "astro-compress": "^1.1.47",
-    "svelte": "^3.55.0",
-    "svelte-markdown": "^0.2.3",
-    "tailwindcss": "^3.0.24"
+    "astro": "^2.9.7",
+    "astro-compress": "^1.1.50",
+    "svelte": "^4.1.2",
+    "svelte-markdown": "^0.3.0",
+    "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
     "prettier": "^2.8.8",
