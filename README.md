@@ -1,14 +1,12 @@
 # [altair-bueno.github.io](https://altair-bueno.github.io)
 
-Contains the source code of my personal website, deployed on GitHub Pages
+My personal landing page, built with Astro, Svelte and Tailwind CSS and deployed on GitHub Pages.
 
-# Build instructions
+The page is a static shell. Visitors' browsers load the résumé from [`Altair-Bueno/Altair-Bueno/data.json`](https://github.com/Altair-Bueno/Altair-Bueno/blob/master/data.json) (via `raw.githubusercontent.com`) and the activity feed from the GitHub API. Nothing is baked in at build time, so edits to `data.json` show up without a rebuild.
 
 ```shell
-# First install the required dependencies
 pnpm install
-# Run a dev server
-pnpm run dev
-# Build for production
-pnpm run build
+pnpm dev     # dev server
+pnpm test    # unit tests
+pnpm build   # type-check + production build
 ```

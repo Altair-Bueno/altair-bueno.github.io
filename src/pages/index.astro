@@ -1,19 +1,53 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import AcknowledgmetFooter from "../components/AcknowledgmetFooter.svelte";
-import IndexCard from "../components/IndexCard";
-import config from "../json/config.json" assert { type: "json" };
+import Base from "../layouts/Base.astro";
+import Activity from "../components/Activity.svelte";
+import Profile from "../components/Profile.svelte";
+import { acknowledgments, GITHUB_USER, site } from "../lib/site";
 
-const { acknowledgments, websiteSource, resume, events } = config;
+const profile = `https://github.com/${GITHUB_USER}`;
+const eventsUrl = `https://api.github.com/users/${GITHUB_USER}/events/public?per_page=50`;
 ---
 
-<BaseLayout>
-  <div class="flex flex-col w-screen h-screen items-center">
-    <div class="flex flex-col md:flex-row gap-4 m-4 md:mt-24">
-      <IndexCard client:only {resume} {websiteSource} {events} />
-    </div>
-    <footer class="mt-auto w-full">
-      <AcknowledgmetFooter {acknowledgments} />
+<Base>
+  <div class="mx-auto grid max-w-5xl grid-cols-[minmax(0,1fr)] gap-x-16 gap-y-14 px-5 py-14 sm:px-8 sm:py-24 lg:grid-cols-[minmax(0,1fr)_20rem]">
+    <main>
+      <Profile client:load name={site.name} avatar={site.avatar} {profile} />
+      <noscript>
+        <p class="mt-8">
+          This page loads its content from GitHub and needs JavaScript. Meanwhile, find me on{" "}
+          <a class="text-accent underline" href={profile}>
+            GitHub
+          </a>
+        </p>
+      </noscript>
+    </main>
+
+    <aside class="min-w-0 lg:sticky lg:top-24 lg:self-start">
+      <Activity client:load url={eventsUrl} {profile} />
+    </aside>
+
+    <footer class="border-t border-line pt-6 font-mono text-xs leading-relaxed text-muted lg:col-span-2">
+      <p>
+        © {site.name} ·{" "}
+        <a class="underline-offset-4 hover:text-accent hover:underline" href={site.source}>
+          source
+        </a>
+      </p>
+      <p>
+        {acknowledgments.map((a, i) => (
+          <>
+            {i > 0 && " · "}
+            {a.icon} icon by{" "}
+            <a class="underline-offset-4 hover:text-accent hover:underline" href={a.author.link}>
+              {a.author.name}
+            </a>
+          </>
+        ))}{" "}
+        on{" "}
+        <a class="underline-offset-4 hover:text-accent hover:underline" href="https://www.flaticon.com/">
+          flaticon
+        </a>
+      </p>
     </footer>
   </div>
-</BaseLayout>
+</Base>
